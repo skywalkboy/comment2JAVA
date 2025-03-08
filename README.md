@@ -1,20 +1,20 @@
 # Comment2JAVA
 
-一个IntelliJ IDEA插件，用于将Java注释转换为JSON格式。
+An IntelliJ IDEA plugin for converting Java comments to JSON format.
 
-## 功能
+## Features
 
-- 将Java代码中的注释转换为JSON格式
-- 支持单行注释和多行注释
-- 简化API文档生成过程
+- Convert Java code comments to JSON format
+- Support for both single-line and multi-line comments
+- Simplify API documentation generation process
 
-## 使用方法
+## Usage
 
-1. 在IntelliJ IDEA中安装插件
-2. 选择要转换的Java代码
-3. 右键点击并选择"Convert Comment to JSON"选项
-4. 转换后的JSON将会自动生成
+1. Install the plugin in IntelliJ IDEA
+2. Select the Java code you want to convert
+3. Right-click and select the "Convert Comment to JSON" option
+4. The converted JSON will be automatically generated
 
-## 许可证
+## License
 
-本项目采用Apache License 2.0许可证。详情请参阅[LICENSE](LICENSE)文件。 
+This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
