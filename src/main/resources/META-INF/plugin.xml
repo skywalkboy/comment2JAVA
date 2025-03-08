@@ -1,0 +1,95 @@
+<idea-plugin>
+    <id>com.github.skywalkboy.comment2json</id>
+    <name>Comment2JSON</name>
+    <vendor>skywalkboy</vendor>
+    <description><![CDATA[
+        <h2>Comment2JSON - Convert Java Class and Comments to JSON</h2>
+        <p>A smart tool that converts Java classes to JSON format data, focusing on using JavaDoc comments as field values.</p>
+        
+        <h3>Core Features:</h3>
+        <ul>
+            <li><strong>JavaDoc Comment Extraction</strong>: Automatically identifies and extracts JavaDoc comments as JSON values</li>
+            <li><strong>Smart Nested Structure Handling</strong>: Automatically processes nested structures of custom classes to generate complete JSON structures</li>
+            <li><strong>Collection Type Support</strong>: Properly handles collection types like List, Set, etc., preserving element nested structures</li>
+            <li><strong>One-Click Copy</strong>: Generated JSON can be copied to clipboard with one click and auto-close window</li>
+        </ul>
+        
+        <h3>How to Use:</h3>
+        <ol>
+            <li>In a Java file, place the cursor on the class name</li>
+            <li>Trigger the conversion using any of these methods:
+                <ul>
+                    <li>Right-click and select "Comment to JSON"</li>
+                    <li>Use shortcut Ctrl + Alt + J</li>
+                    <li>Press Alt + Insert and select "Comment2JSON" (Generate menu)</li>
+                </ul>
+            </li>
+            <li>The plugin will display the generated JSON data in a popup window</li>
+            <li>Click "Copy to Clipboard" button to quickly copy the JSON content and close the window</li>
+        </ol>
+        
+        <h3>Example:</h3>
+        <p>Java Class:</p>
+        <pre><code>
+public class UserInfo {
+    /**
+     * User unique identifier
+     */
+    private Long id;
+    
+    /**
+     * User name
+     */
+    private String name;
+    
+    /**
+     * User role list
+     */
+    private List&lt;Role&gt; roles;
+}
+
+public class Role {
+    /**
+     * Role code
+     */
+    private String code;
+}
+        </code></pre>
+        
+        <p>Generated JSON:</p>
+        <pre><code>
+{
+  "id": "${User unique identifier}",
+  "name": "${User name}",
+  "roles": [
+    {
+      "code": "${Role code}"
+    }
+  ]
+}
+        </code></pre>
+        
+        <h3>Supported Data Types:</h3>
+        <ul>
+            <li>Java Standard Types (classes in java.* packages): Uses JavaDoc comments or empty string</li>
+            <li>Custom Types: Generates complete nested JSON structure with inner fields processed similarly</li>
+            <li>Collection Types (List, Set, etc.): Generates array structure with elements</li>
+            <li>Map Types: Generates empty object</li>
+            <li>Enum Types: Uses JavaDoc comments or empty string</li>
+        </ul>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <actions>
+        <action id="Comment2JSON.Convert" class="com.example.java2json.Java2JsonAction" text="Comment to JSON" description="Convert Java object to JSON string with comments">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt J"/>
+        </action>
+        
+        <action id="Comment2JSON.Generate" class="com.example.java2json.Java2JsonAction" text="Comment2JSON" description="Generate JSON representation from Java class with comments">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>

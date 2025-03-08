@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.17.0'
+}
+
+group 'com.github.skywalkboy'
+version '1.1'
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+repositories {
+    mavenCentral()
+    // maven { url 'https://maven.aliyun.com/repository/public' }
+    // maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+}
+
+intellij {
+    version = '2023.1'
+    type = 'IC'
+    plugins = ['com.intellij.java']
+    pluginName = 'Comment2JSON'
+}
+
+patchPluginXml {
+    sinceBuild = '231'
+    untilBuild = '241.*'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:3.12.4'
+}
